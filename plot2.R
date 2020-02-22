@@ -10,12 +10,12 @@ elec.data <-
     stringsAsFactors = FALSE
   )
 
-#convert factors to date/time
+#convert date & time factors to date/time
 
 elec.data$DateTime <- paste(elec.data$Date, elec.data$Time)
 elec.data$DateTime <-
   strptime(elec.data$DateTime, format = "%d/%m/%Y %H:%M:%S")
-elec.data$DateTime <- as.POSIXct(elec.data$DateTime)
+#elec.data$DateTime <- as.POSIXct(elec.data$DateTime)
 elec.data$Date <- as.Date(elec.data$Date, format = "%d/%m/%Y")
 
 #subset to days in question
@@ -32,10 +32,9 @@ elec.data.small$Global_active_power <-
 library(datasets)
 library(ggplot2)
 #elec.data.small$Weekday <- weekdays.Date(elec.data.small$Date)
+
 elec.data.small$weekday<-weekdays.Date(elec.data.small$DateTime)
 
-elec.data.small <-
-  transform(elec.data.small, DateTime = factor(DateTime))
 #qplot(elec.data.small$DateTime,elec.data.small$Global_active_power)
 #ggplot(data = elec.data.small, aes(x=DateTime,y=Global_active_power)) +
 # geom_smooth(method = "lm")
@@ -43,18 +42,7 @@ elec.data.small <-
 #plot(Global_active_power ~ DateTime, elec.data.small,type="l")
 
 plot(elec.data.small$DateTime,
-     elec.data.small$Global_active_power,ylab = "Gobal Average Power (kilowatts)",xaxt="n")
-lines(elec.data.small$DateTime,
-      elec.data.small$Global_active_power,
-      type = "l")
-axis(side=1,at=, labels=weekdays(elec.data.small$Date))
-
-
-axis.POSIXct(1,elec.data.small$weekday)
-
-
-
-axis(1, xaxp=c(10, 200, 19), las=2)
+     elec.data.small$Global_active_power,ylab = "Gobal Average Power (kilowatts)",type = "l")
 
 
 dev.copy(png, "plot1.png", width = 480, height = 480)
