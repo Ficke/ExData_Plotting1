@@ -1,5 +1,6 @@
 #Author - Adam Ficke
 #Exporatory Data Analysis Peer Graded Assignment
+#plot 1
 
 #read in data table
 elec.data <-
@@ -29,12 +30,8 @@ str(elec.data.small)
 elec.data.small$Global_active_power <-
   as.numeric(elec.data.small$Global_active_power)
 
-#check for NAs
-test <-
-  elec.data.small[is.na(elec.data.small$Global_active_power),]
-
-#Global Active Power
-
+#plot 1
+png(filename = "plot1.png",width = 480,height = 480)
 hist(
   elec.data.small$Global_active_power,
   col = "red",
@@ -43,5 +40,4 @@ hist(
   ylab = "Frequency"
 )
 
-dev.copy(png, "plot1.png", width = 480, height = 480)
 dev.off()

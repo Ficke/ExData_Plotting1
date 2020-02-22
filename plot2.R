@@ -1,8 +1,8 @@
 #Author - Adam Ficke
 #Exporatory Data Analysis Peer Graded Assignment
-
+#plot 2
 #load libraries
-library(datasets)
+#library(datasets)
 
 #read in data table
 elec.data <-
@@ -28,6 +28,7 @@ elec.data.small$Global_active_power <-
   as.numeric(elec.data.small$Global_active_power)
 
 #Plot2
+png(filename = "plot2.png",width = 480,height = 480)
 
 plot(
   elec.data.small$DateTime,
@@ -36,6 +37,4 @@ plot(
   type = "l",
   xlab = NA
 )
-
-dev.copy(png, "plot2.png", width = 480, height = 480)
 dev.off()
