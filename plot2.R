@@ -1,8 +1,6 @@
 #Author - Adam Ficke
 #Exporatory Data Analysis Peer Graded Assignment
 #plot 2
-#load libraries
-#library(datasets)
 
 #read in data table
 elec.data <-
